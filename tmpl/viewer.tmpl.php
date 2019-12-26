@@ -136,49 +136,6 @@ GASCRIPT;
         <?php endif;
         ?>
         <div class="center">
-            <h1><?php echo $interview->title; ?></h1>
-            <div id="secondaryMetaData">
-                <div>
-                    <strong><?php echo $interview->repository; ?></strong>
-                    <span class="show-info"><i class="fa fa-lg fa-caret-right"></i></span>
-                    <span class="hide-info"><i class="fa fa-lg fa-caret-down"></i></span>
-                    <br/>
-                    <span class="detail-metadata">
-
-                                <?php
-                                if (trim($interview->interviewer)) {
-                                    echo "{$interview->interviewer}, Interviewer";
-                                }
-                                ?>
-                        <?php
-                        if (trim($interview->interviewer) && trim($interview->accession)) {
-                            echo " | ";
-                        }
-                        ?>
-                        <?php echo $interview->accession; ?><br/>
-
-                        <?php if ((string)$interview->collection_link != '') { ?>
-                            <a href="<?php echo $interview->collection_link ?>"><?php echo $interview->collection ?></a>
-                        <?php } else {
-                            ?>
-                            <?php echo $interview->collection; ?>
-                        <?php }
-                        ?>
-                        <?php
-                        if (trim($interview->collection) && trim($interview->series)) {
-                            echo " | ";
-                        }
-                        ?>
-                        <?php if ((string)$interview->series_link != '') { ?>
-                            <a href="<?php echo $interview->series_link ?>"><?php echo $interview->series ?></a>
-                        <?php } else {
-                            ?>
-                            <?php echo $interview->series; ?>
-                        <?php }
-                        ?>
-                            </span>
-                </div>
-            </div>
             <div id="audio-panel">
                 <?php include_once 'tmpl/player_' . $interview->playername . '.tmpl.php'; ?>
             </div>
@@ -193,8 +150,9 @@ GASCRIPT;
             </div>
         <?php endif; ?>
         <div id="main-panels">
-            <div id="searchbox-panel"><?php include_once 'tmpl/search.tmpl.php'; ?></div>
             <div id="content-panel">
+                <?php include_once 'tmpl/search.tmpl.php'; ?>
+                <h4>Click below for more information on the contents of this recording</h4>
                 <div id="holder-panel"></div>
                 <?php
                 $indexDisplay = 'display:none';
@@ -214,74 +172,6 @@ GASCRIPT;
             </div>
 
         </div>
-    </div>
-    <div id="footer">
-        <div id="footer-metadata">
-            <?php if (!empty($rights)) { ?>
-                <p><span></span></p><strong><a href="#" id="lnkRights">View Rights Statement</a></strong>
-                <div id="rightsStatement"><?php echo $rights; ?></div>
-            <?php } else {
-                ?>
-                <p><span></span></p><strong>View Rights Statement</strong>
-            <?php }
-            ?>
-            <?php if (!empty($usage)) { ?>
-                <p><span></span></p><strong><a href="#" id="lnkUsage">View Usage Statement</a></strong>
-                <div id="usageStatement"><?php echo $usage; ?></div>
-            <?php } else {
-                ?>
-                <p><span></span></p><strong>View Usage Statement</strong>
-            <?php }
-            ?>
-
-            <?php if (!empty($acknowledgment)) { ?>
-                <p><span></span></p><strong><a href="#" id="lnkFunding">Acknowledgment</a></strong>
-                <div id="fundingStatement"><?php echo $acknowledgment; ?></div>
-            <?php } else {
-                ?>
-                <p><span></span></p><strong>Acknowledgment</strong>
-            <?php }
-            ?>
-            <?php if (!empty($collectionLink)) { ?>
-                <p><span></span></p><strong>Collection Link:
-                    <?php if (isset($interview->collection_link) && (string)$interview->collection_link != '') { ?>
-                        <a href="<?php echo $interview->collection_link ?>"><?php echo $interview->collection ?></a>
-                    <?php } else {
-                        ?>
-                        <?php echo $interview->collection; ?>
-                    <?php }
-                    ?>
-                </strong>
-            <?php }
-            ?>
-            <?php if (!empty($seriesLink)) { ?>
-                <p><span></span></p>
-                <strong>Series Link:
-                    <?php if (isset($interview->series_link) && (string)$interview->series_link != '') { ?>
-                        <a href="<?php echo $interview->series_link ?>"><?php echo $interview->series ?></a>
-                    <?php } else {
-                        ?>
-                        <?php echo $interview->series; ?>
-                    <?php }
-                    ?>
-                </strong>
-            <?php }
-            ?>
-            <?php if (!empty($contactemail)) { ?>
-                <p><span></span></p>
-                <strong>Contact Us: <a href="mailto:<?php echo $contactemail ?>"><?php echo $contactemail ?></a> |
-                    <a href="<?php echo $contactlink ?>"><?php echo $contactlink ?></a>
-                </strong>
-            <?php }
-            ?>
-        </div>
-        <div id="footer-copyright">
-            <small id="copyright"><span>&copy; <?php echo Date("Y") ?></span><?php echo $copyrightholder ?></small>
-        </div>
-        <div id="footer-logo">
-            <img alt="Powered by OHMS logo" src="imgs/ohms_logo.png" border="0"/>
-        </div>
-        <br clear="both"/>
     </div>
     <script src="js/jquery.jplayer.min.js"></script>
     <script src="js/jquery.easing.1.4.js"></script>
