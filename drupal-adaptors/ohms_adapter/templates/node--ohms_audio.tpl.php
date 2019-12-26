@@ -55,3 +55,7 @@
   <?php print render($content['comments']); ?>
 
 </article>
+
+<script>
+  iFrameResize({ log: true }, '#ohms-viewer')
+</script>

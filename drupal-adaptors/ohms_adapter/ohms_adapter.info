@@ -5,5 +5,5 @@ description = A module to provide an interface with the Oral History Metadata Sy
 core = 7.x
 package = OHMS Adapter
 files[] = ohms_adapter.module
-
-;scripts[] = "https://cdnjs.cloudflare.com/ajax/libs/iframe-resizer/3.6.3/iframeResizer.min.js"
+stylesheets[all][] = templates/ohms_audio.css
+scripts[] = templates/iframeResizer.min.js
