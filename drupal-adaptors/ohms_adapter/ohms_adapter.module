@@ -1,0 +1,34 @@
+<?php
+// $Id$
+
+/**
+ * @file
+ * A module providing an interface to the Oral History Metadata Synchronizer.
+ *
+ * This module provides a template for the "OHMS audio"
+ * content type, as well as a hook to save the OHMS
+ * XML into a file for use by the OHMS Player PHP code.
+ */
+
+/**
+ * Implements hook_help().
+ */
+function ohms_adapter_help($path, $arg) {
+  if ($path == 'admin/help#ohms_adapter') {
+    return t('Oral History Metadata Synchronizer adapter module.');
+  }
+}
+
+ /**
+  * Implements hook_theme().
+  */
+function ohms_adapter_theme($existing, $type, $theme, $path) {
+  $theme = array();
+  $theme['node__ohms_audio'] = array(
+    'render element' => 'content',
+    'base hook' => 'node',
+    'template' => 'node--ohms_audio',
+    'path' => drupal_get_path('module', 'ohms_adapter') . '/templates',
+   );
+  return $theme;
+}

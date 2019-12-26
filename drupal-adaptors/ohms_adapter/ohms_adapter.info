@@ -1,0 +1,9 @@
+;$Id$
+
+name = OHMS Adapter
+description = A module to provide an interface with the Oral History Metadata Synchronizer.
+core = 7.x
+package = OHMS Adapter
+files[] = ohms_adapter.module
+
+;scripts[] = "https://cdnjs.cloudflare.com/ajax/libs/iframe-resizer/3.6.3/iframeResizer.min.js"

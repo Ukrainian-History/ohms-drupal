@@ -1,3 +1,12 @@
+OHMS Viewer and Drupal 7 integration
+========================================
+
+This is a fork of the [OHMS Viewer repository](https://github.com/uklibraries/ohms-viewer) of the Oral History Metadata Synchronizer project of the University of Kentuky, with specific customizations for the needs of the Ukrainian History and Education Center. The goal is to keep the OHMS Viewer code in sync with the UK Libraries version, with the adition of code to allow for better iframe embedding.
+
+The code in the `drupal_adaptors` directory are meant for incorporation into a Drupal 7 website. Specifically, the `ohms_adapter` directory should be placed in either `/sites/all/modules` or `/sites/default/modules`, and `ohms_audio_content_type-7.x-x` is a Drupal `feature` that can be installed as a module in order to create the OHMS Audio content type used by the UHEC.
+
+
+
 OHMS Viewer installation and customization instructions
 =======================================================
 
