@@ -31,14 +31,23 @@
     </header>
   <?php endif; ?>
 
-<!--   <iframe id="ohms-player"
-    title="Audio player"
-    scrolling="no" 
-    src="/ohms-viewer/viewer.php?cachefile=blah_1999-01_CA666_010101_pres_20160203_ohms.xml">
-  </iframe> -->
+
+  <?php print render($content['body']); ?>
+
+  <!-- <?php print request_path(); ?> -->
+
+  <!-- http://livesite.lndo.site/ohms-drupal/viewer.php?cachefile=blah_1999-01_CA666_010101_pres_20160203_ohms.xml#segment2107 -->
+<!-- 
+if(window.location.hash) {
+  // Fragment exists
+} else {
+  // Fragment doesn't exist
+} -->
+
 
   <iframe 
     id="ohms-viewer" 
+    name="ohms-viewer"
     title="Audio player"
     src="/ohms-drupal/viewer.php?cachefile=blah_1999-01_CA666_010101_pres_20160203_ohms.xml" 
     scrolling="no"></iframe>
@@ -57,5 +66,15 @@
 </article>
 
 <script>
-  iFrameResize({ log: true }, '#ohms-viewer')
+  Drupal.behaviors.ohms_adapter = {
+    attach: function (context, settings) {
+      if (window.location.hash) {
+        document.getElementsByName('ohms-viewer')[0].src = "/ohms-drupal/viewer.php?cachefile=blah_1999-01_CA666_010101_pres_20160203_ohms.xml".concat(window.location.hash);    
+      } else {
+        document.getElementsByName('ohms-viewer')[0].src = "/ohms-drupal/viewer.php?cachefile=blah_1999-01_CA666_010101_pres_20160203_ohms.xml";
+      
+    }
+      iFrameResize({ log: true }, '#ohms-viewer');
+    }
+  }
 </script>
