@@ -32,24 +32,16 @@
   <?php endif; ?>
 
 
-  <?php print render($content['body']); ?>
-
-  <!-- <?php print request_path(); ?> -->
-
-  <!-- http://livesite.lndo.site/ohms-drupal/viewer.php?cachefile=blah_1999-01_CA666_010101_pres_20160203_ohms.xml#segment2107 -->
-<!-- 
-if(window.location.hash) {
-  // Fragment exists
-} else {
-  // Fragment doesn't exist
-} -->
-
+  <?php 
+    print render($content['body']); 
+    $filename = field_get_items("node", $node, 'field_ohms_filename')[0]['value'];
+  ?>
 
   <iframe 
     id="ohms-viewer" 
     name="ohms-viewer"
     title="Audio player"
-    src="/ohms-drupal/viewer.php?cachefile=blah_1999-01_CA666_010101_pres_20160203_ohms.xml" 
+    src="/ohms-drupal/viewer.php?cachefile=<?php print $filename;?>"
     scrolling="no"></iframe>
 
   <?php
@@ -69,11 +61,11 @@ if(window.location.hash) {
   Drupal.behaviors.ohms_adapter = {
     attach: function (context, settings) {
       if (window.location.hash) {
-        document.getElementsByName('ohms-viewer')[0].src = "/ohms-drupal/viewer.php?cachefile=blah_1999-01_CA666_010101_pres_20160203_ohms.xml".concat(window.location.hash);    
+        document.getElementsByName('ohms-viewer')[0].src = "/ohms-drupal/viewer.php?cachefile=<?php print $filename; ?>".
+              concat(window.location.hash);    
       } else {
-        document.getElementsByName('ohms-viewer')[0].src = "/ohms-drupal/viewer.php?cachefile=blah_1999-01_CA666_010101_pres_20160203_ohms.xml";
-      
-    }
+        document.getElementsByName('ohms-viewer')[0].src = "/ohms-drupal/viewer.php?cachefile=<?php print $filename; ?>"
+      }
       iFrameResize({ log: true }, '#ohms-viewer');
     }
   }

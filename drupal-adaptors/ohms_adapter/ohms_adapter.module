@@ -32,3 +32,37 @@ function ohms_adapter_theme($existing, $type, $theme, $path) {
    );
   return $theme;
 }
+
+/**
+ * Implements hook_node_postsave().
+ */
+function ohms_adapter_node_postsave($node, $op) {
+  if ($node->type == "ohms_audio") {
+    $filename = field_get_items("node", $node, 'field_ohms_filename')[0]['value'];
+    $xmlFilePath = $_SERVER['DOCUMENT_ROOT']."/sites/default/files/ohms/".$filename;
+    
+    if ($op != "delete") {
+      $xml = field_get_items('node', $node, 'field_ohms_xml')[0]['value'];
+
+      # hack to deal with OHMS Player's inability to deal with qualified elements
+
+      $xml = str_replace('xmlns:ohms="https://www.weareavp.com/nunncenter/ohms"', 'xmlns="https://www.weareavp.com/nunncenter/ohms"', $xml);
+      $xml = str_replace("<ohms:", "<", $xml);
+      $xml = str_replace("</ohms:", "</", $xml);
+     
+      $xmlFileHandle = fopen($xmlFilePath, 'w');
+      if ($xmlFileHandle) {
+        watchdog('ohms_adapter_notice', "Writing XML to file path {$xmlFilePath}.");
+
+        fwrite($xmlFileHandle, $xml);
+        fclose($xmlFileHandle);
+      } else {
+        watchdog('ohms_adapter_error', "The file path {$xmlFilePath} couldn't be opened for writing.");
+      }
+    } else {
+      if (!unlink($xmlFilePath)) {
+        watchdog('ohms_adapter_error', "Failed to remove {$filename} on delete of node {$node->title}.");
+      } 
+    }
+  }
+}
