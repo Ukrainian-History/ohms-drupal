@@ -1,9 +1,9 @@
 OHMS Viewer and Drupal 7 integration
 ========================================
 
-This is a fork of the [OHMS Viewer repository](https://github.com/uklibraries/ohms-viewer) of the Oral History Metadata Synchronizer project of the University of Kentuky, with specific customizations for the needs of the Ukrainian History and Education Center. The goal is to keep the OHMS Viewer code in sync with the UK Libraries version, with the exception of the addition of code to allow for better iframe embedding, and other template modifications to allow for better integration with the workflow at the UHEC.
+This is a fork of the [OHMS Viewer repository](https://github.com/uklibraries/ohms-viewer) of the Oral History Metadata Synchronizer project of the University of Kentucky, with specific customizations for the needs of the Ukrainian History and Education Center. The goal is to keep the OHMS Viewer code in sync with the UK Libraries version, with the exception of the addition of code to allow for better iframe embedding and template modifications to allow for better integration with the workflow and website structure at the UHEC.
 
-The code in the `drupal_adaptors` directory are meant for incorporation into a Drupal 7 website. Specifically, the `ohms_adapter` directory should be placed in either `/sites/all/modules` or `/sites/default/modules`, and `ohms_audio_content_type-7.x-x` is a Drupal `feature` that can be installed as a module in order to create the OHMS Audio content type used by the UHEC.
+The code in the `drupal_adaptors` directory are meant for incorporation into a Drupal 7 website. Specifically, the `ohms_adapter` directory is a Drupal module should be placed in either `/sites/all/modules` or `/sites/default/modules`, and `ohms_audio_content_type-7.x-x` is a Drupal `feature` that can be installed as a module in order to create the OHMS Audio content type used by the UHEC. The `feeds` directory contains configuration code and XSL files that can be used to create a Feeds importer to generate nodes of the OHMS Audio content type from PBCore files generated using `bwf2pbcore` of the [autoBWF package](https://github.com/Ukrainian-History/autoBWF). The importer requires the XSLT pipeline processor.
 
 
 
