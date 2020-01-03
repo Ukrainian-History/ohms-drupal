@@ -66,3 +66,9 @@ function ohms_adapter_node_postsave($node, $op) {
     }
   }
 }
+
+function ohms_adapter_node_view_alter(&$build) {
+  $node = $build['#node'];
+  if ($build['#view_mode'] == 'teaser' && $node->type == "ohms_audio" && isset($build['links']['node']['#links']['node-readmore']['title']))
+    $build['links']['node']['#links']['node-readmore']['title'] = t('Listen to recording');
+}

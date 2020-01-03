@@ -31,12 +31,10 @@
     </header>
   <?php endif; ?>
 
+  <?php if ($view_mode == "full"): 
+    $filename = field_get_items("node", $node, 'field_ohms_filename')[0]['value']; ?>
 
-  <?php 
-    print render($content['body']); 
-    $filename = field_get_items("node", $node, 'field_ohms_filename')[0]['value'];
-  ?>
-
+  <div class="audio-node-wrapper clearfix">
   <iframe 
     id="ohms-viewer" 
     name="ohms-viewer"
@@ -44,18 +42,24 @@
     src="/ohms-drupal/viewer.php?cachefile=<?php print $filename;?>"
     scrolling="no"></iframe>
 
-  <?php
-    // We hide the comments and links now so that we can render them later.
-    hide($content['comments']);
-    hide($content['links']);
-    print render($content);
-  ?>
+  <div class="audio-metadata">
+  <?php endif; 
+  print render($content['body']); 
+  // We hide the comments and links now so that we can render them later.
+  hide($content['comments']);
+  hide($content['links']);
+  print render($content);
+  print render($content['links']);
+  print render($content['comments']);
 
-  <?php print render($content['links']); ?>
-
-  <?php print render($content['comments']); ?>
+  if ($view_mode == "full"): ?>
+    </div> <!-- audio-metadata -->
+    </div> <!-- audio-node-wrapper -->
+  <?php endif; ?>
 
 </article>
+
+<?php if ($view_mode == "full"): ?>
 
 <script>
   Drupal.behaviors.ohms_adapter = {
@@ -70,3 +74,5 @@
     }
   }
 </script>
+
+<?php endif; ?>
