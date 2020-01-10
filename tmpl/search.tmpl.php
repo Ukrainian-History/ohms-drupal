@@ -77,20 +77,3 @@ $toggleDisplay = "";
 endif;
 ?>
 <span id="alert"></span>
-<form id="search-form" onSubmit="return false;" name="search-form" class="preview-search-form">
-    <fieldset>
-        <legend align="center" id="search-legend"><span class="search-label">Search this <?php echo $searchThisLabel ?></span>
-            <span class="search-show-info"><i class="fa fa-lg fa-caret-right"></i></span>
-            <span class="search-hide-info"><i class="fa fa-lg fa-caret-down"></i></span>
-        </legend>
-        <div class="search-content">
-            <label for="kw" style="display:none;">Search keyword field</label>
-            <input class="kw-empty" title="Search keyword field" id="kw" name="kw" size="30" value="Keyword"/>
-            <button class="search-button" id="submit-btn">Go</button>
-            <a href="#" class="searchclear-button" id="clear-btn">X</a>
-            <div id="search-results"></div>
-        </div>
-    </fieldset>
-</form>
-
-

@@ -35,6 +35,8 @@
     $filename = field_get_items("node", $node, 'field_ohms_filename')[0]['value']; ?>
 
   <div class="audio-node-wrapper clearfix">
+  <div class="audio-player-wrapper">
+  <?php print render($content['body']); ?>
   <iframe 
     id="ohms-viewer" 
     name="ohms-viewer"
@@ -42,9 +44,14 @@
     src="/ohms-drupal/viewer.php?cachefile=<?php print $filename;?>"
     scrolling="no"></iframe>
 
+  </div> <!-- audio-player-wrapper -->
+
   <div class="audio-metadata">
-  <?php endif; 
-  print render($content['body']); 
+
+  <?php else:
+    print render($content['body']);
+  endif; 
+   
   // We hide the comments and links now so that we can render them later.
   hide($content['comments']);
   hide($content['links']);

@@ -787,7 +787,7 @@ input {
 
     #header {
         width: auto;
-        padding: 0 15px;
+        padding: 0 20px 0 0 !important;
     }
 
     #footer {
@@ -796,7 +796,6 @@ input {
     }
 
     #main {
-        padding: 0 1% 0 1%;
         width: 95%;
         height: 820px !important;
     }
@@ -806,7 +805,6 @@ input {
         margin: 0 !important;
         float: left;
         position: relative;
-        padding: 0 15px;
     }
 
     #holder-panel {
