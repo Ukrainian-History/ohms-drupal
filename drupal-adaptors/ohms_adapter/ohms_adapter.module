@@ -46,9 +46,9 @@ function ohms_adapter_node_postsave($node, $op) {
 
       # hack to deal with OHMS Player's inability to deal with qualified elements
 
-      $xml = str_replace('xmlns:ohms="https://www.weareavp.com/nunncenter/ohms"', 'xmlns="https://www.weareavp.com/nunncenter/ohms"', $xml);
-      $xml = str_replace("<ohms:", "<", $xml);
-      $xml = str_replace("</ohms:", "</", $xml);
+      $xml = preg_replace("/<\w+:ROOT.+?>/", '<ROOT xmlns="https://www.weareavp.com/nunncenter/ohms">', $xml);
+      $xml = preg_replace("/<\w+?:/", "<", $xml);
+      $xml = preg_replace("/<\/\w+?:/", "</", $xml);
      
       $xmlFileHandle = fopen($xmlFilePath, 'w');
       if ($xmlFileHandle) {
