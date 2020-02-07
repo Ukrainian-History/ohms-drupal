@@ -148,7 +148,10 @@ GASCRIPT;
             <div class="user_notes"><?php echo $interview->user_notes ?>
                 <img src="imgs/button_close.png" onclick="$('.user_notes').slideToggle();"/>
             </div>
-        <?php endif; ?>
+        <?php endif;
+
+        if ($interview->index || $interview->transcript): ?>
+
         <div id="main-panels">
             <div id="content-panel">
                 <?php include_once 'tmpl/search.tmpl.php'; ?>
@@ -172,6 +175,7 @@ GASCRIPT;
             </div>
 
         </div>
+    <?php endif; ?>
     </div>
     <script src="js/jquery.jplayer.min.js"></script>
     <script src="js/jquery.easing.1.4.js"></script>
