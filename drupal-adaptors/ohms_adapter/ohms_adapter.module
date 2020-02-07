@@ -44,12 +44,18 @@ function ohms_adapter_node_postsave($node, $op) {
     if ($op != "delete") {
       $xml = field_get_items('node', $node, 'field_ohms_xml')[0]['value'];
 
-      # hack to deal with OHMS Player's inability to deal with qualified elements
-
+      # hack to work around OHMS Player's inability to cope with qualified elements
       $xml = preg_replace("/<\w+:ROOT.+?>/", '<ROOT xmlns="https://www.weareavp.com/nunncenter/ohms">', $xml);
       $xml = preg_replace("/<\w+?:/", "<", $xml);
       $xml = preg_replace("/<\/\w+?:/", "</", $xml);
-     
+
+      # replace OHMS media URL with the actual URL of the media derived from the filename field
+
+      if ( ($file_items = field_get_items('node', $node, 'field_ohms_audio_file')) ) {
+        $media_url = file_create_url($file_items[0]["uri"]);
+        $xml = preg_replace("/<media_url>.+<\/media_url>/", "<media_url>".$media_url."</media_url>", $xml);
+      }
+
       $xmlFileHandle = fopen($xmlFilePath, 'w');
       if ($xmlFileHandle) {
         watchdog('ohms_adapter_notice', "Writing XML to file path {$xmlFilePath}.");
