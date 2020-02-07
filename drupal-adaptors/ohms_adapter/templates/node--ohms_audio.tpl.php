@@ -55,6 +55,26 @@
   // We hide the comments and links now so that we can render them later.
   hide($content['comments']);
   hide($content['links']);
+
+  print render($content['field_ohms_date']);
+  print render($content['field_ohms_language']);
+  print render($content['field_source_collection']);
+
+  echo "<h3>Individuals heard on the recording</h3>";
+  print render($content['field_ohms_host']);
+  print render($content['field_ohms_speaker']);
+  print render($content['field_ohms_interviewer']);
+  print render($content['field_ohms_interviewee']);
+  print render($content['field_ohms_performer']);
+  
+  echo "<h3>Subject terms</h3>";
+  print render($content['field_ohms_topic']);
+  print render($content['field_ohms_name']);
+  print render($content['field_ohms_location']);
+
+  print render($content['field_ohms_owner']);
+  print render($content['field_ohms_usage']);
+  
   print render($content);
   print render($content['links']);
   print render($content['comments']);
