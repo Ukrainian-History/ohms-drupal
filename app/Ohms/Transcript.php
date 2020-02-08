@@ -60,7 +60,7 @@ class Transcript {
                 }
                 $host = $_SERVER['HTTP_HOST'];
                 $uri = $_SERVER['REQUEST_URI'];
-                $directSegmentLink = "$protocol://$host$uri#segment{$point->time}";
+                $directSegmentLink = "DRUPAL-URL#segment{$point->time}";
                 $nlPartialTranscript = nl2br($partial_transcript);
                 $nlSynopsis = nl2br($synopsis);
 

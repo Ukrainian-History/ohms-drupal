@@ -167,8 +167,10 @@ GASCRIPT;
                 ?>
                 <div id="index-panel" class="index-panel" style="<?php echo $indexDisplay; ?>">
                     <?php
-                    # TODO munge the index links here
-                    echo $interview->index; ?>
+                    # munge the index links based on cms_record_id
+                    $index_html = $interview->index;
+                    $index_html = str_replace("DRUPAL-URL", $interview->cms_record_id, $index_html);
+                    echo $index_html; ?>
                 </div>
                 <div id="transcript-panel" class="transcript-panel" style="<?php echo $transcriptDisplay; ?>">
                     <?php echo $interview->transcript; ?>
