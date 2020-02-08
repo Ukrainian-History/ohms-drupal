@@ -67,6 +67,7 @@ class Version3
             'collection_link' => (string)$ohfile->record->collection_link,
             'transcript_alt_raw' => (string)$ohfile->record->transcript_alt,
             'transcript_raw' => (string)$ohfile->record->transcript,
+            'cms_record_id' => (string)$ohfile->record->cms_record_id,
             
         );
 

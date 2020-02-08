@@ -166,7 +166,9 @@ GASCRIPT;
                 }
                 ?>
                 <div id="index-panel" class="index-panel" style="<?php echo $indexDisplay; ?>">
-                    <?php echo $interview->index; ?>
+                    <?php
+                    # TODO munge the index links here
+                    echo $interview->index; ?>
                 </div>
                 <div id="transcript-panel" class="transcript-panel" style="<?php echo $transcriptDisplay; ?>">
                     <?php echo $interview->transcript; ?>
