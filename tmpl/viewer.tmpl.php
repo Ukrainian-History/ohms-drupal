@@ -90,7 +90,7 @@ GASCRIPT;
     <script src="js/toggleSwitch.js?v1.16"></script>
     <script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.8.18/jquery-ui.min.js"></script>
     <script src="js/viewer.js"></script>
-    <script src="js/iframeResizer.contentWindow.min"></script>
+    <script src="js/iframeResizer.contentWindow.min.js"></script>
     <script type="text/javascript" src="js/tipped/tipped.js"></script>
     <link rel="stylesheet" href="css/tipped/tipped.css" type="text/css"/>
     <script src="js/jquery.simplePagination.js"></script>
