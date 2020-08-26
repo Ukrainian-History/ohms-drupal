@@ -28,7 +28,7 @@ $feeds_importer->config = array(
     'plugin_key' => 'FeedsNodeProcessor',
     'config' => array(
       'expire' => '-1',
-      'author' => 0,
+      'author' => '10',
       'authorize' => 1,
       'mappings' => array(
         0 => array(
@@ -126,7 +126,7 @@ $feeds_importer->config = array(
         14 => array(
           'source' => 'ohmsusage',
           'target' => 'field_ohms_usage',
-          'unique' => FALSE,
+          'format' => 'full_html',
           'language' => 'und',
         ),
         15 => array(
@@ -154,6 +154,13 @@ $feeds_importer->config = array(
           'target' => 'field_ohms_language',
           'term_search' => '0',
           'autocreate' => 1,
+          'language' => 'und',
+        ),
+        19 => array(
+          'source' => 'ohmsaudibleperson',
+          'target' => 'field_ohms_audible_person',
+          'term_search' => '0',
+          'autocreate' => 1,
         ),
       ),
       'insert_new' => '1',
@@ -172,3 +179,4 @@ $feeds_importer->config = array(
   'import_on_create' => 1,
   'process_in_background' => 0,
 );
+
