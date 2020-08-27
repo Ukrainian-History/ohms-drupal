@@ -58,9 +58,11 @@
 
   print render($content['field_ohms_date']);
   print render($content['field_ohms_language']);
+  print render($content['field_ohms_creator']);
+  print render($content['field_fast_form']);
   print render($content['field_source_collection']);
 
-  echo "<h3>Individuals heard on the recording</h3>";
+  echo "<h3>Individuals heard on this recording</h3>";
   print render($content['field_ohms_host']);
   print render($content['field_ohms_speaker']);
   print render($content['field_ohms_interviewer']);
