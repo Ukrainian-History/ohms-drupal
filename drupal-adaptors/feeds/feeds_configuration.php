@@ -10,7 +10,7 @@ $feeds_importer->config = array(
     'config' => array(
       'allowed_extensions' => 'xml',
       'delete_uploaded_file' => 0,
-      'direct' => 0,
+      'direct' => 1,
       'directory' => 'private://feeds',
       'allowed_schemes' => array(
         'public' => 'public',
@@ -161,6 +161,12 @@ $feeds_importer->config = array(
           'target' => 'field_ohms_audible_person',
           'term_search' => '0',
           'autocreate' => 1,
+          'language' => 'und',
+        ),
+        20 => array(
+          'source' => 'ohmscreator',
+          'target' => 'field_ohms_creator',
+          'unique' => FALSE,
         ),
       ),
       'insert_new' => '1',
