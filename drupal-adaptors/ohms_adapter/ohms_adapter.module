@@ -33,6 +33,18 @@ function ohms_adapter_theme($existing, $type, $theme, $path) {
   return $theme;
 }
 
+ /**
+  * Implements hook_node_presave().
+  */
+function ohms_adapter_node_presave($node) {
+    if ($node->type == "ohms_audio") {
+      $xml = field_get_items('node', $node, 'field_ohms_xml')[0]['value'];
+      $stripped = strip_tags($xml);
+      // watchdog('ohms_adapter_notice', substr($stripped, 0, 50));
+      $node->field_ohms_xml_tagless['und'][0]['value'] = strip_tags($xml);
+    }
+}
+
 /**
  * Implements hook_node_postsave().
  */
