@@ -63,14 +63,19 @@
     print render($content['field_fast_form']);
     print render($content['field_source_collection']);
 
-    echo "<h3>Individuals heard on this recording</h3>";
+    if ($content['field_ohms_host'] or $content['field_ohms_speaker'] or $content['field_ohms_interviewer'] 
+      or $content['field_ohms_interviewee'] or $content['field_ohms_performer']) {
+        echo "<h3>Individuals or groups heard on this recording</h3>";
+    }
     print render($content['field_ohms_host']);
     print render($content['field_ohms_speaker']);
     print render($content['field_ohms_interviewer']);
     print render($content['field_ohms_interviewee']);
     print render($content['field_ohms_performer']);
     
-    echo "<h3>Subject terms</h3>";
+    if ($content['field_ohms_topic'] or $content['field_ohms_name'] or $content['field_ohms_location']) {
+      echo "<h3>Subject terms</h3>";
+    }
     print render($content['field_ohms_topic']);
     print render($content['field_ohms_name']);
     print render($content['field_ohms_location']);
