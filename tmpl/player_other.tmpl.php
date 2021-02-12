@@ -17,7 +17,7 @@ $customWidth = '';
 if ($clipFormat != 'video') {
     $class = 'jp-audio';
 }
-if ($mediaFormat == 'mp4') {
+if ($mediaFormat == 'mp4' || $mediaFormat == 'mov') {
     $mediaFormat = "m4v";
 }
 else if($mediaFormat =='mpga'){
@@ -26,11 +26,11 @@ else if($mediaFormat =='mpga'){
 
 ?>
 
-<div class="centered" style="<?php echo $customWidth; ?>">
+<div class="centered" style="<?php echo $customWidth; ?>" oncontextmenu="return false;">
     <?php if (in_array($clipFormat, $validClipFormats)): ?>
         <a href="<?php echo $linkToMedia ?>" rel="<?php echo $mediaFormat ?>" clip-format="<?php echo $clipFormat; ?>"
            id="subjectPlayer" class="jp-jplayer" onclick="return false;"></a>
-        <div id="jp_container_1" class="<?php echo $class; ?>" style="display:none;">
+        <div id="jp_container_1" class="<?php echo $class; ?>" style="display:none;" oncontextmenu="return false;">
             <div class="jp-type-playlist">
                 <div class="jp-gui jp-interface">
                     <ul class="jp-controls">
